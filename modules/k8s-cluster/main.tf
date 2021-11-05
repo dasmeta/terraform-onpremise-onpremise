@@ -1,18 +1,20 @@
-resource "null_resource" "cluster-provisioning" {
-  triggers = {
-    project_id = google_project.my_project.project_id
+resource "null_resource" "create" {
+    count = var.command == "create" ? 1 : 0
+  provisioner "local-exec" {
+    command = var.create
   }
+}
 
+resource "null_resource" "reset" {
+    count = var.command == "reset" ? 1 : 0
   provisioner "local-exec" {
-    command = <<-EOC
-ansible-playbook -i ${var.inventory}  --become --become-user=root --user=${var.vm-user} --private-key=${var.private-key} kubespray/create.yml -e ignore_assert_errors=yes
-EOC
+    command = var.reset
   }
-  
+}
+
+resource "null_resource" "upgrade-cluster" {
+    count = var.command == "upgrade-cluster" ? 1 : 0
   provisioner "local-exec" {
-    when    = destroy
-    command = <<-EOD
-ansible-playbook -i ${var.inventory}  --become --become-user=root --user=${var.vm-user} --private-key=${var.private-key} kubespray/reset.yml -e ignore_assert_errors=yes
-EOD
+    command = var.upgrade-cluster
   }
 }
