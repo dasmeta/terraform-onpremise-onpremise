@@ -6,18 +6,18 @@ module cluster-provisioner  {
     upgrade-cluster = var.upgrade-cluster
     command         = var.command
 }
-module install-helm-cert-manager  {
+module cert-manager  {
     source = "../cert-manager"
 }
 
-module install-helm-alertmanager  {
+module alertmanager  {
     source = "../alertmanager"
 }
 
-module install-helm-prometheus-grafana-metrics  {
+module prometheus-grafana-metrics  {
     source = "../prometheus-grafana-metrics"
 }
 
-module install-helm-rancher  {
+module rancher  {
     source = "../rancher"
 }
