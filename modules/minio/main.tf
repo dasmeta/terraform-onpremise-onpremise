@@ -9,7 +9,7 @@ module minio {
   app = {
     name          = "minio"
     version       = "9.2.5"
-    chart         = "bitnami/minio"
+    chart         = "minio"
     create_namespace = true
     force_update  = true
     wait          = false
@@ -35,3 +35,5 @@ module minio {
 }
 
 #helm install minio --set persistence.existingClaim=task-pv-claim --set persistence.storageClass="manual" --set persistence.mountPath=/mnt/data   bitnami/minio   
+
+
