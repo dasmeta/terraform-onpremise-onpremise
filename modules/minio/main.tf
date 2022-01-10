@@ -6,6 +6,7 @@ module minio {
   namespace  = "minio"
   repository =  "https://charts.bitnami.com/bitnami"
 
+
   app = {
     name          = "minio"
     version       = "9.2.5"
@@ -16,6 +17,7 @@ module minio {
     recreate_pods = false
     deploy        = 1
   }
+
 
   set = [
     {

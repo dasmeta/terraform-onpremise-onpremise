@@ -2,8 +2,10 @@ module ingress-nginx {
   source  = "terraform-module/release/helm"
   version = "2.7.0"
 
+
   namespace  = "ingress-nginx-2"
   repository =  "https://charts.bitnami.com/bitnami"
+
 
   app = {
     name          = "ingress-nginx"
@@ -15,6 +17,8 @@ module ingress-nginx {
     recreate_pods = false
     deploy        = 1
   }
+
+
 set = [
     {
       name  = "kind"
@@ -29,6 +33,7 @@ set = [
       value = "true"
     }
   ]
+
 
   set_sensitive = [
     
