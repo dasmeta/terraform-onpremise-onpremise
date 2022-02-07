@@ -6,6 +6,6 @@
 ## minimal module setup
 ```terraform
 module "mongodb-replicaset" {
-    source = "dasmeta/onpremise/onpremise//modules/mongodb-replicaset"
+    source = "dasmeta/onpremise/onpremise//modules/mongodb-events"
     version = "0.1.0"
 }

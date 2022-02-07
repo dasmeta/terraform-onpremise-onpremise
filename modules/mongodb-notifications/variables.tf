@@ -1,15 +1,15 @@
 
-variable rootpassword {
-  type = string
+variable "rootpassword" {
+  type        = string
   description = "MUST WRITE ROOTPASSWORD"
 }
 
-variable pvcsize {
-  type = string
+variable "pvcsize" {
+  type        = string
   description = "PVC Size"
 }
 
-variable architecture {
-  type = string
+variable "architecture" {
+  type    = string
   default = "replicaset"
 }
