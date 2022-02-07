@@ -1,6 +1,6 @@
 variable "clusterissuer_name" {
-  type        = string
-  description = "cluster issuer name, use an unique value if there are multiple ones"
+  type    = string
+  default = "clusterissuer"
 }
 variable "email_address" {
   type    = string
