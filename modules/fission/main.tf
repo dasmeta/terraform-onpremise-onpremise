@@ -14,4 +14,14 @@ module fission {
     recreate_pods = false
     deploy        = 1
   }
+  set =  [
+  {
+    name = "influxdb.enabled"
+    value = "true"
+  },
+  { 
+    name = "persistence.enabled"
+    value = "false"
+  }
+  ]
 }

@@ -4,12 +4,12 @@ module minio {
 
 
   namespace  = "minio"
-  repository =  "https://charts.bitnami.com/bitnami"
+  repository =  "https://helm.min.io/"
 
 
   app = {
     name          = "minio"
-    version       = "9.2.5"
+    version       = "8.0.3"
     chart         = "minio"
     create_namespace = true
     force_update  = true
@@ -21,21 +21,13 @@ module minio {
 
   set = [
     {
-      name  = "persistence.existingClaim"
-      value = "task-pv-claim"
+      name  = "persistence.size"
+      value = "8Gi"
     },
     {
-      name  = "persistence.storageClass"
-      value = "manual"
+      name  = "mountPath"
+      value = "/data"
     }
 
   ]
-    
-  set_sensitive = [
-    
-  ]
 }
-
-#helm install minio --set persistence.existingClaim=task-pv-claim --set persistence.storageClass="manual" --set persistence.mountPath=/mnt/data   bitnami/minio   
-
-
