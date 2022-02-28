@@ -1,3 +1,19 @@
+
+# Example 1 
+```
+
+module "kubespray" {
+  source = "git::https://github.com/kubernetes-sigs/kubespray.git?ref=release-2.17" 
+}
+
+module cluster-provisioner  {
+    source = "dasmeta/onpremise/onpremise//modules/complete-cluster"
+}
+
+```
+
+# Example 2
+
 ```hct
 
 module "kubespray" {
@@ -5,12 +21,12 @@ module "kubespray" {
 }
 
 module cluster-provisioner  {
-    source = ""
+    source = "dasmeta/onpremise/onpremise//modules/complete-cluster"
 
-    command       = "upgrade-cluster"
-    reset           = var.reset
-    upgrade-cluster = var.upgrade-cluster
-    create          = var.create
+    command         = "upgrade-cluster"
+    reset           = ""
+    upgrade-cluster = ""
+    create          = ""
 }
 
 ```
