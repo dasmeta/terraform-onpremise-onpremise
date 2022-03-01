@@ -7,6 +7,7 @@ variable "rootpassword" {
 variable "pvcsize" {
   type        = string
   description = "PVC Size"
+  default     = "8Gi"
 }
 
 variable "architecture" {
