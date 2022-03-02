@@ -8,14 +8,14 @@ module "minio" {
 
 
   app = {
-    name             = "minio"
+    name             = "${var.name}"
     version          = "${var.app_version}"
     chart            = "minio"
-    create_namespace = true
-    force_update     = true
-    wait             = false
-    recreate_pods    = false
-    deploy           = 1
+    create_namespace = "${var.create_namespace}"
+    force_update     = "${var.force_update}"
+    wait             = "${var.wait}"
+    recreate_pods    = "${var.recreate_pods}"
+    deploy           = "${var.deploy}"
   }
 
 
