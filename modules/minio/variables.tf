@@ -1,5 +1,5 @@
 variable "helm_set" {
-  type = string
+  type = any
   default = [
     {
       name  = "persistence.existingClaim"
