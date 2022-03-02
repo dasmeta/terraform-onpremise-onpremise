@@ -8,14 +8,14 @@
 module "minio" {
     source = "dasmeta/onpremise/onpremise//modules/minio"
 
-helm_set = [
-                {
-                name  = "persistence.existingClaim"
-                value = "minio-pvc"
-                }
-            ]
+    helm_set = [
+                    {
+                    name  = "persistence.existingClaim"
+                    value = "minio-pvc"
+                    }
+                ]
 
-app_version = "8.0.3"
+    app_version = "8.0.3"
 
 }
 ```
