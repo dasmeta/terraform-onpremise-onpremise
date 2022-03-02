@@ -9,7 +9,7 @@ module "minio" {
 
   app = {
     name             = "minio"
-    version          = "8.0.3"
+    version          = "${var.app_version}"
     chart            = "minio"
     create_namespace = true
     force_update     = true
