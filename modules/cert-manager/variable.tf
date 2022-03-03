@@ -25,3 +25,7 @@ variable "r53_configs" {
     secret_access_key_id = ""
   }
 }
+variable "k8s_config_path" {
+  type    = string
+  default = "~/.kube/config"
+}
