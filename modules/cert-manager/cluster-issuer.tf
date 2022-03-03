@@ -52,26 +52,16 @@ locals {
   )
 }
 
-resource "kubernetes_manifest" "cluster_issuer" {
-  manifest = {
-    "apiVersion" = "cert-manager.io/v1"
-    "kind"       = "ClusterIssuer"
-    "metadata" = {
-      "name" = var.clusterissuer_name
-    }
-    "spec" = {
-      "acme" = {
-        "email" = var.email_address
-        "privateKeySecretRef" = {
-          "name" = "${var.clusterissuer_name}-secret"
-        }
-        "server"  = var.server_url
-        "solvers" = local.solvers
-      }
-    }
+data "kubectl_path_documents" "cluster_issuer" {
+  pattern = "${path.module}/cluster_issuer.yaml"
+  vars = {
+    clusterissuer_name = var.clusterissuer_name
+    email_address      = var.email_address
+    solvers            = local.solvers
   }
+}
 
-  depends_on = [
-    module.cert-manager
-  ]
+resource "kubectl_manifest" "cluster_issuer" {
+  count     = length(data.kubectl_path_documents.cluster_issuer.documents)
+  yaml_body = element(data.kubectl_path_documents.cluster_issuer.documents, count.index)
 }

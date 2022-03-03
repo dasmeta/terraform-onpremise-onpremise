@@ -8,11 +8,6 @@ variable "email_address" {
   default = "aram.m@dasmeta.com"
 }
 
-variable "server_url" {
-  type    = string
-  default = "https://acme-v02.api.letsencrypt.org/directory"
-}
-
 variable "r53_configs" {
   type = object({
     access_key_id        = string
