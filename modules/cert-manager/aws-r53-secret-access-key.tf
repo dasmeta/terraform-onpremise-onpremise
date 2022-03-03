@@ -1,4 +1,4 @@
-resource "kubernetes_secret" "route53" {
+resource "kubernetes_secret" "aws_route53_secret_access_key" {
   count = var.r53_configs.access_key_id == "" ? 0 : 1
 
   metadata {
