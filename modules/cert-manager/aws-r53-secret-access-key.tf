@@ -11,4 +11,8 @@ resource "kubernetes_secret" "aws_route53_secret_access_key" {
   }
 
   type = "Opaque"
+
+  depends_on = [
+    module.cert-manager
+  ]
 }

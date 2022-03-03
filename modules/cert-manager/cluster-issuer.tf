@@ -27,4 +27,8 @@ data "kubectl_path_documents" "cluster_issuer" {
 resource "kubectl_manifest" "cluster_issuer" {
   count     = length(data.kubectl_path_documents.cluster_issuer[0].documents)
   yaml_body = element(data.kubectl_path_documents.cluster_issuer[0].documents, count.index)
+
+  depends_on = [
+    module.cert-manager
+  ]
 }

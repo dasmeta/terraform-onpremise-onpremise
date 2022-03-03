@@ -1,5 +1,5 @@
 resource "kubernetes_secret" "gcloud_dns_secret_access_key" {
-  count = var.r53_configs.access_key_id == "" ? 0 : 1
+  count = var.gcloud_configs.project_id == "" ? 0 : 1
 
   metadata {
     name      = "${var.clusterissuer_name}-gcloud-dns-secret"
@@ -11,4 +11,8 @@ resource "kubernetes_secret" "gcloud_dns_secret_access_key" {
   }
 
   type = "Opaque"
+
+  depends_on = [
+    module.cert-manager
+  ]
 }
