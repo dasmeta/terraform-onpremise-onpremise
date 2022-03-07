@@ -4,7 +4,7 @@ module "minio" {
 
 
   namespace  = "minio"
-  repository = "https://helm.min.io/"
+  repository = "https://charts.bitnami.com/bitnami"
 
 
   app = {
@@ -19,5 +19,10 @@ module "minio" {
   }
 
 
-  set = var.helm_set
+  set = [
+    {
+      name  = "mode"
+      value = "${var.mode}"
+    }
+  ]
 }

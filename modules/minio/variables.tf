@@ -1,17 +1,12 @@
-variable "helm_set" {
-  type = any
-  default = [
-    {
-      name  = "persistence.existingClaim"
-      value = "minio-pvc"
-    }
-  ]
-  description = "Set helm values"
+variable "mode" {
+  type        = string
+  default     = "distributed"
+  description = "MinIO server mode (standalone or distributed)"
 }
 
 variable "app_version" {
   type        = string
-  default     = "8.0.3"
+  default     = "10.1.16"
   description = "Minio App Chart Version"
 }
 
