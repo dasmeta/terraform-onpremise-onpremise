@@ -4,7 +4,7 @@ module "minio" {
 
 
   namespace  = "minio"
-  repository = "https://helm.min.io/"
+  repository = "https://charts.bitnami.com/bitnami"
 
 
   app = {
