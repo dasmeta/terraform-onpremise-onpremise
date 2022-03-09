@@ -1,12 +1,12 @@
 variable "app_version" {
   type        = string
-  default     = "10.1.16"
+  default     = "2.1.2"
   description = "Minio App Chart Version"
 }
 
 variable "name" {
   type        = string
-  default     = "minio"
+  default     = "loki-stack"
   description = "Application name"
 }
 
