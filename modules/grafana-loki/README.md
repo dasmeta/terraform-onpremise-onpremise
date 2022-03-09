@@ -6,5 +6,13 @@
 ```terraform
 module "grafana-loki" {
     source = "dasmeta/onpremise/onpremise//modules/grafana-loki"
-    version = "0.1.0"
+    version = ""
+    resources_requests = {
+        cpu    = "250m"
+        memory = "64Mi"
+    }
+    resources_limits = {
+        cpu    = "500m"
+        memory = "128Mi"
+    }
 }
