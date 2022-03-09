@@ -18,6 +18,9 @@ module "minio" {
     deploy           = "${var.deploy}"
   }
 
+  values = [
+    templatefile("${path.module}/values.yaml", { resources_requests_cpu = "${var.resources_requests.cpu}", resources_requests_memory = "${var.resources_requests.memory}", resources_limits_cpu = "${var.resources_limits.cpu}", resources_limits_memory = "${var.resources_limits.memory}" })
+  ]
 
   set = [
     {
