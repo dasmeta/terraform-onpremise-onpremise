@@ -50,8 +50,3 @@ variable "resources_requests" {
   default     = {}
   description = "The resources container"
 }
-
-variable "grafana_enabled" {
-  type    = bool
-  default = true
-}
