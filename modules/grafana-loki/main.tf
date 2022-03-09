@@ -7,7 +7,7 @@ module "grafana-loki" {
 
   app = {
     name             = var.name
-    version          = var.chart_version
+    version          = var.app_version
     chart            = "loki-stack"
     create_namespace = var.create_namespace
     force_update     = var.force_update
