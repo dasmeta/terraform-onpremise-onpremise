@@ -1,6 +1,6 @@
 variable "app_version" {
   type        = string
-  default     = "10.1.16"
+  default     = "1.15.1"
   description = "Minio App Chart Version"
 }
 
