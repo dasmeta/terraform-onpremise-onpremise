@@ -1,9 +1,3 @@
-variable "helm_set" {
-  type        = any
-  default     = []
-  description = "Set helm values"
-}
-
 variable "app_version" {
   type        = string
   default     = "10.1.16"

@@ -19,5 +19,10 @@ module "minio" {
   }
 
 
-  set = var.helm_set
+  set = [
+    {
+      name  = "mode"
+      value = "${var.mode}"
+    }
+  ]
 }
