@@ -3,16 +3,21 @@ module "keda" {
   version = "2.7.0"
 
   namespace  = "keda"
-  repository =  "https://kedacore.github.io/charts"
+  repository = "https://kedacore.github.io/charts"
 
   app = {
-    name          = "keda"
-    version       = "2.5.1"
-    chart         = "keda"
-    create_namespace = true
-    force_update  = true
-    wait          = false
-    recreate_pods = false
-    deploy        = 1
+    name             = var.name
+    version          = var.app_version
+    chart            = "keda"
+    create_namespace = var.create_namespace
+    force_update     = var.force_update
+    wait             = var.wait
+    recreate_pods    = var.recreate_pods
+    deploy           = var.deploy
   }
+
+  values = [
+    templatefile("${path.module}/values.yaml", { resources_requests_cpu = "${var.resources_requests.cpu}", resources_requests_memory = "${var.resources_requests.memory}", resources_limits_cpu = "${var.resources_limits.cpu}", resources_limits_memory = "${var.resources_limits.memory}" })
+  ]
+
 }
