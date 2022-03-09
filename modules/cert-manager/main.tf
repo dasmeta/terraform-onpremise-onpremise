@@ -1,3 +1,12 @@
+data "kubectl_path_documents" "cert-manager-crds" {
+  pattern = "https://github.com/jetstack/cert-manager/releases/download/v1.7.1/cert-manager.crds.yaml"
+}
+
+resource "kubectl_manifest" "cert-manager-crds" {
+  count     = length(data.kubectl_path_documents.cert-manager-crds.documents)
+  yaml_body = element(data.kubectl_path_documents.cert-manager-crds.documents, count.index)
+}
+
 module "cert-manager" {
   source  = "terraform-module/release/helm"
   version = "2.7.0"
@@ -33,5 +42,9 @@ module "cert-manager" {
 
   set_sensitive = [
 
+  ]
+
+  depends_on = [
+    kubectl_manifest.cert-manager-crds
   ]
 }

@@ -1,7 +1,8 @@
-variable "helm_set" {
-  type        = any
-  default     = []
-  description = "Set helm values"
+
+variable "mode" {
+  type        = string
+  default     = "distributed"
+  description = "MinIO server mode (standalone or distributed)"
 }
 
 variable "app_version" {

@@ -1,0 +1,19 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: ${clusterissuer_name}
+spec:
+  acme:
+    email: ${email_address}
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: ${clusterissuer_name}-secret
+    solvers:
+    - dns01:
+        route53:
+          region: ${region}
+          accessKeyID: ${accesskeyid}
+          hostedZoneID: ${hostedzoneid}
+          secretAccessKeySecretRef:
+            name: ${secretaccesskeysecretref_name}
+            key: ${secretaccesskeysecretref_key}

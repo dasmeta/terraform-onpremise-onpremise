@@ -6,16 +6,6 @@
 ```
 module "minio" {
     source = "dasmeta/onpremise/onpremise//modules/minio"
-
-    helm_set = [
-                    {
-                    name  = "persistence.existingClaim"
-                    value = "minio-pvc"
-                    }
-                ]
-
-    app_version = "8.0.3"
-
 }
 ```
 
@@ -25,15 +15,9 @@ module "minio" {
 module "minio" {
     source = "dasmeta/onpremise/onpremise//modules/minio"
 
-    helm_set = [
-                    {
-                    name  = "persistence.existingClaim"
-                    value = "minio-pvc"
-                    }
-                ]
-
-    app_version = "8.0.3"
-    name        = ""
+    mode = 
+    app_version = "10.1.16"
+    name        = "distributed"
     deploy      = 1
     create_namespace = true
     force_update     = true
