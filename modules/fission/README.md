@@ -4,6 +4,15 @@
 ```terraform
 module "fission" {
     source = "dasmeta/onpremise/onpremise//modules/fission"
-    version = "0.1.0"
+    version = ""
+    
+    resources_requests = {
+        cpu    = "250m"
+        memory = "64Mi"
+    }
+    resources_limits = {
+        cpu    = "500m"
+        memory = "128Mi"
+    }
 }
 ```
