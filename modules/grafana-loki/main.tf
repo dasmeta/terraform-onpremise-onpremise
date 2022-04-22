@@ -27,15 +27,15 @@ module "grafana-loki" {
     },
     {
       name  = "prometheus.enabled"
-      value = "true"
+      value = var.prometheus_enabled
     },
     {
       name  = "prometheus.alertmanager.persistentVolume.enabled"
-      value = "false"
+      value = var.prometheus_alertmanager_persistentVolume_enabled
     },
     {
       name  = "prometheus.server.persistentVolume.enabled"
-      value = "false"
+      value = var.prometheus_server_persistentVolume_enabled
     }
   ]
 }
