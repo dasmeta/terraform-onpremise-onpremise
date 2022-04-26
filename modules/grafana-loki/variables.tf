@@ -55,3 +55,18 @@ variable "grafana_enabled" {
   type    = bool
   default = true
 }
+
+variable "prometheus_enabled" {
+  type    = bool
+  default = true
+}
+
+variable "prometheus_alertmanager_persistentVolume_enabled" {
+  type    = bool
+  default = true
+}
+
+variable "prometheus_server_persistentVolume_enabled" {
+  type    = bool
+  default = true
+}
