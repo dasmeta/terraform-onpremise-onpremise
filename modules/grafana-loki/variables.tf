@@ -40,14 +40,20 @@ variable "deploy" {
   description = "Deploy"
 }
 variable "resources_limits" {
-  type        = any
-  default     = {}
+  type = any
+  default = {
+    cpu    = "500m"
+    memory = "256M"
+  }
   description = "The resources container"
 }
 
 variable "resources_requests" {
-  type        = any
-  default     = {}
+  type = any
+  default = {
+    cpu    = "250m"
+    memory = "256M"
+  }
   description = "The resources container"
 }
 
@@ -69,4 +75,26 @@ variable "prometheus_alertmanager_persistentVolume_enabled" {
 variable "prometheus_server_persistentVolume_enabled" {
   type    = bool
   default = true
+}
+
+variable "enable_ingress" {
+  type    = bool
+  default = true
+}
+
+variable "cluster_issuer" {
+  type        = string
+  default     = ""
+  description = "Cluster name ingress will be using to ask certificate from cert-manager for ingress"
+}
+
+variable "hostname" {
+  type        = string
+  description = "The hostname grafana will be accessed by"
+}
+
+variable "ingress_annotations" {
+  type        = list(any)
+  default     = []
+  description = "(optional) describe your variable"
 }
