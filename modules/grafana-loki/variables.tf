@@ -1,6 +1,6 @@
 variable "app_version" {
   type        = string
-  default     = "2.1.2"
+  default     = "2.6.5"
   description = "App Chart Version"
 }
 
@@ -69,4 +69,41 @@ variable "prometheus_alertmanager_persistentVolume_enabled" {
 variable "prometheus_server_persistentVolume_enabled" {
   type    = bool
   default = true
+}
+# Grafana User
+variable "gf_username" {
+  default = "admin"
+}
+
+variable "gf_password" {
+  default = "Dun8OAYtLBmomYAB7Fsp50GkKsQI"
+}
+
+# Grafana databases
+variable "auth_postgresPassword" {
+  default = "977Opp2Yl6X"
+}
+
+variable "db_user" {
+  default = "grafana"
+}
+
+variable "db_password" {
+  default = "977Opp2Yl6X"
+}
+
+variable "db_name" {
+  default = "grafana"
+}
+
+variable "db_type" {
+  default = "postgres"
+}
+
+variable "db_ssl_mode" {
+  default = "disable"
+}
+
+variable "db_host" {
+  default = "postgresql:5432"
 }
