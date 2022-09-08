@@ -29,6 +29,11 @@ resource "helm_release" "supabase" {
 
   //auth
   set {
+    name  = "auth.environment.GOTRUE_DB_DATABASE_URL"
+    value = "postgres://postgres:${var.DB_PASSWORD}@supabase-database.supabase.svc.cluster.local:5432/postgres?search_path=auth"
+  }
+
+  set {
     name  = "auth.environment.GOTRUE_JWT_SECRET"
     value = var.JWT_SECRET
   }
@@ -79,9 +84,10 @@ resource "helm_release" "supabase" {
     value = var.SERVICE_KEY
   }
   set {
-    name  = "storage.environment.PGRST_JWT_SECRET"
-    value = var.JWT_SECRET
+    name  = "storage.environment.DATABASE_URL"
+    value = "postgres://postgres:${var.DB_PASSWORD}@supabase-database.supabase.svc.cluster.local:5432/postgres?search_path=auth"
   }
+
   // kong
   set {
     name  = "kong.credentials.anonKey"
@@ -91,6 +97,8 @@ resource "helm_release" "supabase" {
     name  = "kong.credentials.serviceRoleKey"
     value = var.SERVICE_KEY
   }
+  // urls
+
 }
 
 
