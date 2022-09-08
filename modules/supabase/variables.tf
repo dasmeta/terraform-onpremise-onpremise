@@ -22,26 +22,25 @@ variable "SMTP_HOST" {
   type    = string
   default = "mail"
 }
+
 variable "SMTP_ADMIN_EMAIL" {
   type    = string
   default = "admin@example.com"
 }
-variable "SMTP_PORT" {
-  type    = any
-  default = "2500"
-}
+
 variable "SMTP_USER" {
   type    = string
-  default = "fake_mail_user"
+  default = "mail_user"
 }
+
 variable "SMTP_PASS" {
   type    = string
-  default = "fake_mail_password"
+  default = "mail_password"
 }
 
 variable "SMTP_SENDER_NAME" {
   type    = string
-  default = "fake_sender"
+  default = "sender"
 }
 
 variable "DB_PASSWORD" {
