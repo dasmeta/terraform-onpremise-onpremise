@@ -1,0 +1,19 @@
+version: 2
+
+updates:
+  - package-ecosystem: "terraform"
+    directory:
+      - "modules/alertmanager"
+      - "modules/cert-manager"
+      - "modules/complete-cluster"
+      - "modules/fission"
+      - "modules/grafana-loki"
+      - "modules/k8s-cluster"
+      - "modules/keda"
+      - "modules/minio"
+      - "modules/mongodb"
+      - "modules/nginx-ingress"
+      - "modules/prometheus-grafana-metrics"
+      - "modules/rancher"
+    schedule:
+      interval: "daily"
