@@ -1,0 +1,37 @@
+name: Checkov
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+jobs:
+  terraform-validate:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: write
+      discussions: write
+      pull-requests: write
+      security-events: write
+      id-token: write
+    strategy:
+      matrix:
+        path:
+          - modules/alertmanager
+          - modules/cert-manager
+          - modules/complete-cluster
+          - modules/fission
+          - modules/grafana-loki
+          - modules/k8s-cluster
+          - modules/keda
+          - modules/minio
+          - modules/mongodb
+          - modules/nginx-ingress
+          - modules/prometheus-grafana-metrics
+          - modules/rancher
+     
+    steps:
+    - uses: dasmeta/reusable-actions-workflows/checkov@main
+      with:
+        fetch-depth: 0
+        directory: ${{ matrix.path }}
+      continue-on-error: true
