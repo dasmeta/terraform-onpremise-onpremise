@@ -1,0 +1,41 @@
+name: Tflint
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+jobs:
+  terraform-validate:
+    permissions:
+      actions: write
+      contents: write
+      discussions: write
+      pull-requests: write
+      id-token: write
+      security-events: write
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        path:
+          - modules/alertmanager
+          - modules/cert-manager
+          - modules/complete-cluster
+          - modules/fission
+          - modules/grafana-loki
+          - modules/k8s-cluster
+          - modules/keda
+          - modules/minio
+          - modules/mongodb
+          - modules/nginx-ingress
+          - modules/prometheus-grafana-metrics
+          - modules/rancher
+     
+    steps:
+    - uses: dasmeta/reusable-actions-workflows/tflint@main
+      with:
+        aws-region: ${{ secrets.AWS_REGION}}
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        path: ${{ matrix.path }}
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+      continue-on-error: true
